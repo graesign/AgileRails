@@ -127,7 +127,7 @@ public class Tabel2 extends JPanel {
 				} else if (st == 2) {
 					return ("Reizend");
 				} else if (st == 3) {
-					return ("Beëindigd");
+					return ("Beindigd");
 				}
 			}
 			if (columnIndex == 1) {
