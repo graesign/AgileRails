@@ -1,0 +1,7 @@
+3. Als er reizigers bij een station staan te wachten, en op het station staat een taakloze trein wachten word de simulatie om onverklaarbare wijze gestopt.
+
+4. Als er 2 treinen met reizigers naar hetzelfde station moeten blijft de eerste trein in het station staan te wachten omdat deze geen taak meer heeft. de 2e trein kan dan niet zijn passagiers laten uitstappen
+
+- Scrollen in stationsscherm
+
+- na verwijderen trein is deze niet weer toe te voegen
