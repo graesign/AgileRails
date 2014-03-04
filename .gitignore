@@ -6,3 +6,4 @@
 *.ear
 
 .DS_Store
+/Rails6/build/built-jar.properties
