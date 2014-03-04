@@ -1,1 +1,14 @@
-#AgileRails
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+.DS_Store
+/Rails6/build/built-jar.properties
+
+
+
+AgileRails_HVA.sublime-project
+AgileRails_HVA.sublime-workspace
