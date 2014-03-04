@@ -1,9 +1,9 @@
-*.class
+#*.class
 
 # Package Files #
-*.jar
-*.war
-*.ear
+#*.jar
+#*.war
+#*.ear
 
 .DS_Store
 /Rails6/build/built-jar.properties
