@@ -8,11 +8,15 @@ config.properties
 #*.ear
 
 .DS_Store
-#/Rails6/build/built-jar.properties
-#/Rails7/Code/RailJava/Rails7/build/built-jar.properties
+# /Rails6/build/built-jar.properties
+# /Rails7/Code/RailJava/Rails7/build/built-jar.properties
+
+# Builds
+/Rails7/Code/RailJava/Rails7/build
+/Rails6/build
 
 
 AgileRails_HVA.sublime-project
 AgileRails_HVA.sublime-workspace
-/Rails6/build
+
 #/Rails6/dist
