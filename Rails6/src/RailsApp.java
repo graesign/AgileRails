@@ -123,6 +123,7 @@ public class RailsApp extends JFrame {
 	}
 
 	public static void main(String Args[]) {
+                Config.load();
 		GraphicsEnvironment env = GraphicsEnvironment
 				.getLocalGraphicsEnvironment();
 		GraphicsDevice myDevice = env.getDefaultScreenDevice();

@@ -1,3 +1,5 @@
+.config.properties
+
 #*.class
 
 # Package Files #
@@ -12,5 +14,5 @@
 
 AgileRails_HVA.sublime-project
 AgileRails_HVA.sublime-workspace
-#/Rails6/build/
+/Rails6/build/
 #/Rails6/dist/
