@@ -116,9 +116,10 @@ public class TreinController{
             int argR[] = {1};
             id[0] = trein.getId();
             reizigerids = trein.getHuidigePassagiersLijst();
-            arg[0] = 0;
-            arg[1] = 0;
-            arg[2] = 0;
+            //Standard value already 0.
+            //arg[0] = 0;
+            //arg[1] = 0;
+            //arg[2] = 0;
             main.updateGui("treindata", id, arg); 
             if(trein.getPassagierAantal() != 0) {
                 main.updateGui("reiziger", reizigerids, argR);

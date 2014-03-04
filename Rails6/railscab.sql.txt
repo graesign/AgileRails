@@ -1,0 +1,35 @@
+-- phpMyAdmin SQL Dump
+-- version 2.10.1
+-- http://www.phpmyadmin.net
+-- 
+-- Host: localhost
+-- Generation Time: May 20, 2008 at 02:16 AM
+-- Server version: 5.0.45
+-- PHP Version: 5.2.5
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+-- 
+-- Database: `railcab`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `Rails`
+-- 
+
+CREATE TABLE `rails` (
+  `id` int(11) NOT NULL auto_increment,
+  `vertrek` int(11) NOT NULL,
+  `bestemming` int(11) NOT NULL,
+  `passagiers` int(11) NOT NULL,
+  `uren` int(11) NOT NULL,
+  `minuten` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `Rails`
+-- 
+
