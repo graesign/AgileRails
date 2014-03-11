@@ -13,7 +13,6 @@ import java.awt.event.*;
 import data.*;
 import baan.*;
 import connection.Database;
-import connection.Dbmanager;
 import java.util.Observer;
 import java.util.Observable;
 import java.io.*;

@@ -6,8 +6,6 @@
 
 package connection;
 
-import railcab.Config;
-
 /**
  *
  * @author Administrator
