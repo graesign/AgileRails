@@ -16,11 +16,21 @@ public class Database {
         Dbmanager.connect();
     }
     
+    /**
+     * Execute query to set a cab in the database
+     * @param people
+     * @param start
+     * @param end 
+     */
     public static void setCab(int people, int start, int end) {
         
     }
     
-    public static void getCab() {
+    /**
+     * Get new people from the database
+     * TODO: Delete the pulled cabs from Db.
+     */
+    public static void getCabs() {
         
     }
 }
