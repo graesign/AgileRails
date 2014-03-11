@@ -20,22 +20,21 @@ public class TreinBeheer{
 	
 	public TreinBeheer(ReisBeheer reisBeheer,RailScherm rs) {
 		
-		//super.start();
-		this.rs=rs;
-		this.reisBeheer = reisBeheer;
-    	for (int i = 0 ; i <10; i++){
+            //super.start();
+            this.rs=rs;
+            this.reisBeheer = reisBeheer;
+            for (int i = 0 ; i <10; i++){
     		  // Cabs aanmaken
     		  alleTreinen.add(new Trein(i,reisBeheer,this));
     		  alleTreinen.get(i).status=-1;
     		  alleTreinen.get(i).zichtbaar =false;
           	  //alleTreinen.get(i).start();
-    	}
-    	for (int i = 0 ; i < 85; i++){
-    		sector[i]=new Sector(i);
-    	}
-    	
-    treinBij();
-    	
+            }
+            for (int i = 0 ; i < 85; i++){
+                    sector[i]=new Sector(i);
+            }
+            
+            treinBij();
 	}
 	
 	Trein trein;

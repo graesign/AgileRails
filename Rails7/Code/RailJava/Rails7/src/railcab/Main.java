@@ -12,6 +12,8 @@ import javax.swing.*;
 import java.awt.event.*;
 import data.*;
 import baan.*;
+import connection.Database;
+import connection.Dbmanager;
 import java.util.Observer;
 import java.util.Observable;
 import java.io.*;
@@ -137,7 +139,8 @@ public class Main implements Observer {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        Config.load();
+        Database.connect();
+        
         boolean baan = false;
         if(args.length > 0) {
             System.out.println("baan gekoppeld");
