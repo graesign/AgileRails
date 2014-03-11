@@ -55,7 +55,7 @@ public class Dbmanager {
      * Executes a query without result.
      * @param query, the SQl query
      */
-    public void executeQuery(String query) {
+    public static void executeQuery(String query) {
         try {
             Statement statement = connection.createStatement();
             statement.executeQuery(query);
@@ -68,7 +68,7 @@ public class Dbmanager {
      * Executes a query with result.
      * @param query, the SQL query
      */
-    public ResultSet doQuery(String query) {
+    public static ResultSet doQuery(String query) {
         ResultSet result = null;
         try {
             Statement statement = connection.createStatement();
@@ -83,7 +83,7 @@ public class Dbmanager {
      * Executes a query with result.
      * @param query, the SQL query
      */
-    public ResultSet insertQuery(String query) {
+    public static ResultSet insertQuery(String query) {
         ResultSet result = null;
         try {
             Statement statement = connection.createStatement();
