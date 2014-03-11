@@ -22,13 +22,15 @@ public class Database {
      * @param start
      * @param end 
      */
-    public static void setCab(int people, int start, int end) {
-        
+    public static void setCab(int start, int end, int people) {
+        Dbmanager.insertQuery("INSERT INTO `rails` (`start`, `end`, `passengers`)"
+                + "VALUES (" + start + ", " + end + ", " + people + ");");
     }
     
     /**
      * Get new people from the database
      * TODO: Delete the pulled cabs from Db.
+     * TODO: Alleen mensen die bij deze rails starten.
      */
     public static void getCabs() {
         
