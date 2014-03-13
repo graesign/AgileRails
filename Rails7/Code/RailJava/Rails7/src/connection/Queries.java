@@ -6,6 +6,11 @@
 
 package connection;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Administrator
@@ -31,8 +36,26 @@ public class Queries {
      * Get new people from the database
      * TODO: Delete the pulled cabs from Db.
      * TODO: Alleen mensen die bij deze rails starten.
+     * @return 
      */
-    public static void getCabs() {
+    public static ResultSet getCabs() {
+        ResultSet rs = Dbmanager.doQuery("SELECT * FROM `rails` WHERE `start` >= " + Listen.railsStart + " AND `start` <= " + Listen.railsEnd + ";");
+
+        return rs;
+    }
+    
+    public static void deleteCabs(ResultSet result) {
+        String ids = "(";
         
+        try {
+            while(result.next()) {
+                ids += result.getString(1) + ",";
+            }
+            ids += "0)";
+            Dbmanager.insertQuery("DELETE FROM `rails` WHERE id in " + ids + ";");
+            result.first();
+        } catch (SQLException ex) {
+            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

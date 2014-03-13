@@ -22,7 +22,6 @@ public class Dbmanager {
      * Open database connection
      */
     public static void connect() {
-        Config.load();
         String url = "jdbc:mysql://" + Config.get("dbhost") + ":3306/" + Config.get("db");
         String driver = "com.mysql.jdbc.Driver";
         String userName = Config.get("dbuser");
