@@ -2,11 +2,11 @@ package main;
 
 import javax.swing.ImageIcon;
 
-public class Cab extends ImageIcon {
+public class CabAnimation extends ImageIcon {
 	/**
-	 * Cabs zijn objecten die in de gui worden weergegeven als plaatjes en een
-	 * realistische weergave zijn van rijdende treinen waarmee ons algoritme
-	 * moet werken.
+	 * CabAnimations zijn objecten die in de gui worden weergegeven als plaatjes en een
+ realistische weergave zijn van rijdende treinen waarmee ons algoritme
+ moet werken.
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -21,7 +21,7 @@ public class Cab extends ImageIcon {
 	public int tpositie =8;
 	
 
-	public Cab(int sid, ReisBeheer rb,TreinBeheer tb) {
+	public CabAnimation(int sid, ReisBeheer rb,TreinBeheer tb) {
 		super("./cab.gif");
 		this.tb=tb;
 		id = sid;
@@ -73,7 +73,7 @@ public class Cab extends ImageIcon {
 	// Zoek de ware coordinaten uit
 	private void localiseer() {
 		if (positie >= 0 && positie < 37.5) {
-			// Cab is boven
+			// CabAnimation is boven
 			rxoff = (int) (Math.round(rx) % 350);
 			if (rxoff > 177 && rxoff < 183) {
 				rxnr = (int) Math.round((rx - 180) / 350);
@@ -83,7 +83,7 @@ public class Cab extends ImageIcon {
 			rx = 81 + ((1092 / 37.5) * positie);
 			ry = 26 + pl;
 		} else if (positie >= 37.5 && positie < 50) {
-			// Cab is rechts
+			// CabAnimation is rechts
 			if (ry > 117 && ry < 123) {
 				checkWissel(3);
 			}
@@ -91,7 +91,7 @@ public class Cab extends ImageIcon {
 			rx = 1174 - pl;
 			ry = 26 + ((379 / 12.5) * (positie - 37.5));
 		} else if (positie >= 50 && positie < 87.5) {
-			// Cab is onder
+			// CabAnimation is onder
 			rxoff = (int) (Math.round(rx) % 350);
 			if (rxoff > 47 && rxoff < 53) {
 				rxnr = (int) (7 - Math.round((rx - 180) / 350));
@@ -101,7 +101,7 @@ public class Cab extends ImageIcon {
 			rx = 1174 - ((1092 / 37.5) * (positie - 50));
 			ry = 405 + pl;
 		} else if (positie >= 87.5 && positie < 100) {
-			// Cab is links
+			// CabAnimation is links
 			if (ry > 327 && ry < 333) {
 				checkWissel(7);
 			}

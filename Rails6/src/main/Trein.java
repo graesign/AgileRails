@@ -13,7 +13,7 @@ import javax.swing.Timer;
  * @version (a version number or a date)
  */
 
-public class Trein extends Cab {
+public class Trein extends CabAnimation {
     /**
 	 * 
 	 */

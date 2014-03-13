@@ -1,17 +1,13 @@
-package main;
+package grafiek;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import org.jfree.data.xy.XYDataset;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
-
+import java.awt.event.*;
+import org.jfree.data.xy.*;
+import org.jfree.data.*;
 import javax.swing.*;
-
 import org.jfree.data.category.DefaultCategoryDataset;
 
-import javax.swing.Timer;
+
 
 public class Statistiek extends JPanel {
 

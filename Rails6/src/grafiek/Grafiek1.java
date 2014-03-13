@@ -1,4 +1,4 @@
-package main;
+package grafiek;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -25,12 +25,13 @@ import javax.swing.*;
  * chart using data from a {@link CategoryDataset}.
  * 
  */
-public class BarChart3DDemo2 extends JPanel {
+public class Grafiek1 extends JPanel {
 
-	private int hoogte, breedte;
-	public DefaultCategoryDataset dataset;
-	public JFreeChart chart;
-	public ChartPanel chartPanel;
+	public static DefaultCategoryDataset form,dataset;
+	public static JFreeChart chart;
+	public static ChartPanel chartPanel;
+	
+
 
 	// ****************************************************************************
 	// * JFREECHART DEVELOPER GUIDE *
@@ -50,9 +51,9 @@ public class BarChart3DDemo2 extends JPanel {
 	 * @param title
 	 *            the frame title.
 	 */
-	public BarChart3DDemo2(final String title) {
+	public Grafiek1() {
 
-	//	super(title);
+
 
 		// create the chart...
 		dataset = new DefaultCategoryDataset();
@@ -88,7 +89,7 @@ public class BarChart3DDemo2 extends JPanel {
 		dataset.addValue(0.0, "", "");
 		dataset.addValue(9.0, "Aantal Reizen 2", "Trein 16");
 		dataset.addValue(0.0, "", "");
-		chart = createChart(dataset);
+		chart = createChart(dataset,"x","y","hoi");
 
 		// add the chart to a panel...
 		chartPanel = new ChartPanel(chart);
@@ -97,39 +98,31 @@ public class BarChart3DDemo2 extends JPanel {
 
 	}
 
-	public BarChart3DDemo2(final String title, DefaultCategoryDataset data) {
+	public Grafiek1(DefaultCategoryDataset data,String x, String y, String name) {
 
 	//	super(title);
 
 		// create the chart...
-		dataset = new DefaultCategoryDataset();
-		dataset = data;
+		form = new DefaultCategoryDataset();
+		form = data;
 
-		chart = createChart(dataset);
+		chart = createChart(form,x,y,name);
 
 		// add the chart to a panel...
 		chartPanel = new ChartPanel(chart);
-		chartPanel.setPreferredSize(new java.awt.Dimension(breedte, hoogte));
+		chartPanel.setPreferredSize(new java.awt.Dimension(800, 300));
 		add(chartPanel);
 
 	}
 
-	public void setDataset(DefaultCategoryDataset dataset) {
-		this.dataset = dataset;
+	public void setDataset(DefaultCategoryDataset datas) {
+		dataset = datas;
+	//	form.clear();
+		form = dataset;
+		
+		
 	}
 
-	public void SetSize(int breed, int hoog) {
-		this.hoogte = hoog;
-		this.breedte = breed;
-	}
-
-	public void setBreedte(int breed) {
-		this.breedte = breed;
-	}
-
-	public void setHoogte(int hoog) {
-		this.hoogte = hoog;
-	}
 
 	/**
 	 * Creates a chart.
@@ -139,14 +132,14 @@ public class BarChart3DDemo2 extends JPanel {
 	 * 
 	 * @return The chart.
 	 */
-	private JFreeChart createChart(final CategoryDataset dataset) {
+	private JFreeChart createChart(final CategoryDataset dataset, String x, String y, String name) {
 
-		final JFreeChart chart = ChartFactory.createBarChart3D("Stastistiken", // chart
+		final JFreeChart chart = ChartFactory.createBarChart3D(name, // chart
 				// title
-				"Category", // domain axis label
-				"Value", // range axis label
+				x, // domain axis label
+				y, // range axis label
 				dataset, // data
-				PlotOrientation.HORIZONTAL, // orientation
+				PlotOrientation.VERTICAL, // orientation
 				true, // include legend
 				true, // tooltips
 				false // urls

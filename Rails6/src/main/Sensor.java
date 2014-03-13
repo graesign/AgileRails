@@ -6,9 +6,9 @@ public class Sensor {
 			30, 31.5, 35, 39.5, 43, 44.5, 47.5, 52.5, 56, 57.5, 61, 64.5, 68,
 			69.5, 73, 76.5, 80, 81.5, 85, 89.5, 93, 94.5, 97.5 };
 	private int id;
-	private Cab cab;
+	private CabAnimation cab;
 
-	public Sensor(int id, Cab cab) {
+	public Sensor(int id, CabAnimation cab) {
 		this.id = id;
 		this.cab = cab;
 	}

@@ -1,5 +1,6 @@
 package main;
 
+import grafiek.Statistiek;
 import connection.Config;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;

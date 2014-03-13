@@ -1,5 +1,6 @@
 package main;
 
+import grafiek.Statistiek;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;

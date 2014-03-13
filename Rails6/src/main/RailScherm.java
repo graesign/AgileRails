@@ -29,7 +29,7 @@ public class RailScherm extends JPanel {
 	// Object Lists
 	public static ArrayList<JButton> stat = new ArrayList<JButton>(); // Station
 	// Buttons
-	public static ArrayList<JLabel> cinfo = new ArrayList<JLabel>(); // Cab info
+	public static ArrayList<JLabel> cinfo = new ArrayList<JLabel>(); // CabAnimation info
 	// labels
 	public static ArrayList<JLabel> sinfo = new ArrayList<JLabel>(); // Station
 	// infolabels
@@ -68,7 +68,7 @@ public class RailScherm extends JPanel {
 		
 		// Voorgrond componenten aanmaken in een for lus
 		for (int i = 0; i < 16; i++) {
-			// Cab labels aanmaken
+			// CabAnimation labels aanmaken
 			cinfo.add(new JLabel("Cab #" + (i)));
 			add(cinfo.get(i));
 		}
@@ -122,12 +122,12 @@ public class RailScherm extends JPanel {
 		// Achtergrond afbeelding weergeven
 		back.paintIcon(this, g, 0, 0);
 		int ti = 0;
-		for (Cab ucab : TreinBeheer.alleTreinen) {
+		for (CabAnimation ucab : TreinBeheer.alleTreinen) {
 			// Teken zichtbare treinen
 			if (ucab.zichtbaar) {
 				cinfo.get(ti).setVisible(true);
 				ucab.paintIcon(this, g, ucab.x, ucab.y);
-				// Teken Cab info labels
+				// Teken CabAnimation info labels
 				JLabel lab = cinfo.get(ti);
 				lab.setBounds(ucab.x - 70, ucab.y + 25, 100, 40);
 				lab.setBackground(lcol);
@@ -149,7 +149,7 @@ public class RailScherm extends JPanel {
 			}
 		}
 		// Teken sensors
-		for (Cab cab : TreinBeheer.treinen) {
+		for (CabAnimation cab : TreinBeheer.treinen) {
 			int i = cab.sensor.check() - 1;
 			if (i != -1 && cab.zichtbaar) {
 				sensoricons.get(i).paintIcon(this, g, senx[i], seny[i]);
