@@ -12,7 +12,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import data.*;
 import baan.*;
-import connection.Database;
+import connection.Queries;
 import java.util.Observer;
 import java.util.Observable;
 import java.io.*;
@@ -138,7 +138,7 @@ public class Main implements Observer {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        Database.connect();
+        Queries.connect();
         
         boolean baan = false;
         if(args.length > 0) {

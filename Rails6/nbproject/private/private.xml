@@ -4,8 +4,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Z:/Documents/Projecten/AgileRails/Rails6/src/DatabaseGegevens.java</file>
-            <file>file:/Z:/Documents/Projecten/AgileRails/Rails6/src/RailsApp.java</file>
+            <file>file:/C:/Users/cation/Documents/NetBeansProjects/AGILE/Rails6/src/connection/Queries.java</file>
+            <file>file:/C:/Users/cation/Documents/NetBeansProjects/AGILE/Rails6/src/connection/Config.java</file>
+            <file>file:/C:/Users/cation/Documents/NetBeansProjects/AGILE/Rails6/src/connection/Dbmanager.java</file>
         </group>
     </open-files>
 </project-private>

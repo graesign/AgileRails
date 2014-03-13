@@ -7,7 +7,6 @@
 package connection;
 
 import java.sql.*;
-import railcab.Config;
 
 /**
  *
