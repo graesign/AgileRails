@@ -49,7 +49,6 @@ public class Listen extends Thread {
      * @throws SQLException 
      */
     public void setCabs(ResultSet cabs) throws SQLException {
-        Queries.deleteCabs(cabs);
         while (cabs.next()) {
             int start = cabs.getInt("start");
             int end = cabs.getInt("end");
@@ -57,6 +56,7 @@ public class Listen extends Thread {
             
             // Insert cabs here!
             AddCab.add(start, end, passengers);
+            Queries.deleteCab(cabs.getString("id"));
         }
     }
 }

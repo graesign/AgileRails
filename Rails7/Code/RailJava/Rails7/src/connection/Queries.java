@@ -44,18 +44,7 @@ public class Queries {
         return rs;
     }
     
-    public static void deleteCabs(ResultSet result) {
-        String ids = "(";
-        
-        try {
-            while(result.next()) {
-                ids += result.getString(1) + ",";
-            }
-            ids += "0)";
-            Dbmanager.insertQuery("DELETE FROM `rails` WHERE id in " + ids + ";");
-            result.first();
-        } catch (SQLException ex) {
-            Logger.getLogger(Queries.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public static void deleteCab(String id) {
+        Dbmanager.insertQuery("DELETE FROM `rails` WHERE id = " + id + ";");
     }
 }

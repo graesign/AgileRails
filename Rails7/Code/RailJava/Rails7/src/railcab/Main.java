@@ -147,7 +147,6 @@ public class Main implements Observer {
             baan = true;
         }
         new Main(baan);
-
     }
     
     /**
