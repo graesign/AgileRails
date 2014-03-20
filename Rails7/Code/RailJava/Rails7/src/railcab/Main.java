@@ -145,54 +145,54 @@ public class Main implements Observer {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-            
         boolean baan = false;
-        if(args.length > 0) {
+        if (args.length > 0) {
             System.out.println("baan gekoppeld");
             baan = true;
         }
 
         Main main = new Main();
-        Listen.listen("rails7", main);
+        AddCab addCab = new AddCab(main);
+        Listen.listen("rails7", addCab);
         main.init(baan);
-}
+    }
     
     /**
      * Deze methode initieert de lijst met baandelen.
      */
     private void initieerBaanDelen() {
-    baangrootte = 30;
-    baanarray = new String[baangrootte];
-    baanarray[0] = "rail";
-    baanarray[1] = "rail";
-    baanarray[2] = "stationrij";
-    baanarray[3] = "stationstop";
-    baanarray[4] = "rail";
-    baanarray[5] = "stationrij";
-    baanarray[6] = "stationstop";
-    baanarray[7] = "rail";
-    baanarray[8] = "stationrij";
-    baanarray[9] = "stationstop";
-    baanarray[10] = "rail";
-    baanarray[11] = "stationrij";
-    baanarray[12] = "stationstop";
-    baanarray[13] = "rail";
-    baanarray[14] = "stationrij";
-    baanarray[15] = "stationstop";
-    baanarray[16] = "rail";
-    baanarray[17] = "stationrij";
-    baanarray[18] = "stationstop";
-    baanarray[19] = "rail";
-    baanarray[20] = "rail";
-    baanarray[21] = "rail";
-    baanarray[22] = "stationrij";
-    baanarray[23] = "stationstop";
-    baanarray[24] = "rail";
-    baanarray[25] = "rail";
-    baanarray[26] = "rail";
-    baanarray[27] = "stationrij";
-    baanarray[28] = "stationstop";
-    baanarray[29] = "rail";
+        baangrootte = 30;
+        baanarray = new String[baangrootte];
+        baanarray[0] = "rail";
+        baanarray[1] = "rail";
+        baanarray[2] = "stationrij";
+        baanarray[3] = "stationstop";
+        baanarray[4] = "rail";
+        baanarray[5] = "stationrij";
+        baanarray[6] = "stationstop";
+        baanarray[7] = "rail";
+        baanarray[8] = "stationrij";
+        baanarray[9] = "stationstop";
+        baanarray[10] = "rail";
+        baanarray[11] = "stationrij";
+        baanarray[12] = "stationstop";
+        baanarray[13] = "rail";
+        baanarray[14] = "stationrij";
+        baanarray[15] = "stationstop";
+        baanarray[16] = "rail";
+        baanarray[17] = "stationrij";
+        baanarray[18] = "stationstop";
+        baanarray[19] = "rail";
+        baanarray[20] = "rail";
+        baanarray[21] = "rail";
+        baanarray[22] = "stationrij";
+        baanarray[23] = "stationstop";
+        baanarray[24] = "rail";
+        baanarray[25] = "rail";
+        baanarray[26] = "rail";
+        baanarray[27] = "stationrij";
+        baanarray[28] = "stationstop";
+        baanarray[29] = "rail";
     }
 
     /**

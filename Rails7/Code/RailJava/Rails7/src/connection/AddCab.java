@@ -6,8 +6,8 @@
 
 package connection;
 
+import static connection.Listen.normalize;
 import railcab.Main;
-import railcab.Timer;
 
 /**
  *
@@ -15,13 +15,13 @@ import railcab.Timer;
  */
 public class AddCab {
     
-    public static Main main;
-
-    public static void add(int start, int end, int passengers) {
-        int tijd = (int) Math.ceil(Timer.getTijd() / 60.0);
-        while (passengers-- > 0) {
-            main.maakReiziger(start, end, tijd);
-        }
-    }
+    public Main main;
     
+    public AddCab(Main main) {
+        this.main = main;
+    }
+
+    public void add(int start, int end, int passengers) {
+        Main.GUI.setPassengers(start + normalize, end + normalize, passengers);
+    }
 }

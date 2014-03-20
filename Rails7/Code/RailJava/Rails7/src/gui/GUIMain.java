@@ -6,13 +6,10 @@
 
 package gui;
 import java.awt.*;
-import java.awt.*;
 import javax.swing.*;
-import javax.swing.table.*;
 import railcab.Main;
 import railcab.Timer;
 import java.awt.Point;
-
 
 /**
  *
@@ -72,10 +69,17 @@ Main main;
         //Foutmelding venster laden
         dlgFoutmelding.setLocationRelativeTo(null);
         dlgFoutmelding.setVisible(false);
-        
-        
     }
  
+    public void setPassengers(int start, int end, int passengers) {
+        System.out.println("inside GUI Main");
+        vertrekpuntBox.getModel().setSelectedItem("Station " + start);
+        bestemmingBox.getModel().setSelectedItem("Station " + end);
+        aantalReizSpinner.getModel().setValue(passengers);
+
+        this.voegMensenToe();
+    }
+    
 /**
 * veranderd de tijd in de gui. 
 * @param tijdInSeconden de tijd vor de simulatie in seconden.
@@ -224,13 +228,13 @@ Main main;
         dlgFoutmelding.setMinimumSize(new java.awt.Dimension(420, 200));
         dlgFoutmelding.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblErrorTitel.setFont(new java.awt.Font("Tahoma", 1, 18));
+        lblErrorTitel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblErrorTitel.setText("Fout - Geen titel ingevoerd"); // NOI18N
         dlgFoutmelding.getContentPane().add(lblErrorTitel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         txtFoutmelding.setColumns(20);
         txtFoutmelding.setEditable(false);
-        txtFoutmelding.setFont(new java.awt.Font("Tahoma", 0, 10));
+        txtFoutmelding.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         txtFoutmelding.setLineWrap(true);
         txtFoutmelding.setRows(5);
         txtFoutmelding.setText("In dit venster word een beschrijving van de foutmelding weergegeven.\nEventueel Met oplossing."); // NOI18N
@@ -238,7 +242,7 @@ Main main;
 
         dlgFoutmelding.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 390, 100));
 
-        btnFoutmeldingOK.setFont(new java.awt.Font("Tahoma", 0, 10));
+        btnFoutmeldingOK.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         btnFoutmeldingOK.setText("OK"); // NOI18N
         btnFoutmeldingOK.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -277,10 +281,10 @@ Main main;
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlSimulatieSnelheid.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Simulatie snelheid", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 10)));
+        pnlSimulatieSnelheid.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Simulatie snelheid", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 10))); // NOI18N
         pnlSimulatieSnelheid.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        sldSimulatieSnelheid.setFont(new java.awt.Font("Tahoma", 0, 10));
+        sldSimulatieSnelheid.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         sldSimulatieSnelheid.setMajorTickSpacing(100);
         sldSimulatieSnelheid.setMaximum(999);
         sldSimulatieSnelheid.setMinorTickSpacing(50);
@@ -294,11 +298,11 @@ Main main;
         });
         pnlSimulatieSnelheid.add(sldSimulatieSnelheid, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 180, -1));
 
-        lblTijd.setFont(new java.awt.Font("Arial", 1, 18));
+        lblTijd.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblTijd.setText("Tijd: 00:00:00"); // NOI18N
         pnlSimulatieSnelheid.add(lblTijd, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
-        btnStart.setFont(new java.awt.Font("Tahoma", 0, 10));
+        btnStart.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         btnStart.setText("Start");
         btnStart.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -307,7 +311,7 @@ Main main;
         });
         pnlSimulatieSnelheid.add(btnStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 70, -1));
 
-        btnStop.setFont(new java.awt.Font("Tahoma", 0, 10));
+        btnStop.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         btnStop.setText("Pauzeer");
         btnStop.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -316,51 +320,51 @@ Main main;
         });
         pnlSimulatieSnelheid.add(btnStop, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 70, -1));
 
-        lblControle.setFont(new java.awt.Font("Tahoma", 0, 10));
+        lblControle.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblControle.setText("Controle:");
         pnlSimulatieSnelheid.add(lblControle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
-        lblSnelheid.setFont(new java.awt.Font("Tahoma", 0, 10));
+        lblSnelheid.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblSnelheid.setText("Snelheid:");
         pnlSimulatieSnelheid.add(lblSnelheid, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
         getContentPane().add(pnlSimulatieSnelheid, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 260, 140));
 
-        pnlReizigerToevoegen.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reizigers toevoegen", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 10)));
+        pnlReizigerToevoegen.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reizigers toevoegen", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 10))); // NOI18N
         pnlReizigerToevoegen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        vertrekpuntBox.setFont(new java.awt.Font("Tahoma", 0, 10));
+        vertrekpuntBox.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         vertrekpuntBox.setMaximumRowCount(9);
         vertrekpuntBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Vertrekpunt", "Station 1", "Station 2", "Station 3", "Station 4", "Station 5", "Station 6", "Station 7", "Station 8" }));
         pnlReizigerToevoegen.add(vertrekpuntBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 220, -1));
 
-        bestemmingBox.setFont(new java.awt.Font("Tahoma", 0, 10));
+        bestemmingBox.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         bestemmingBox.setMaximumRowCount(9);
         bestemmingBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bestemming", "Station 1", "Station 2", "Station 3", "Station 4", "Station 5", "Station 6", "Station 7", "Station 8" }));
         pnlReizigerToevoegen.add(bestemmingBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 220, -1));
 
-        aantalReizSpinner.setFont(new java.awt.Font("Tahoma", 0, 10));
+        aantalReizSpinner.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         aantalReizSpinner.setFocusable(false);
         pnlReizigerToevoegen.add(aantalReizSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 130, -1));
 
-        aantalLabel.setFont(new java.awt.Font("Tahoma", 0, 10));
+        aantalLabel.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         aantalLabel.setText("Aantal:"); // NOI18N
         pnlReizigerToevoegen.add(aantalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
-        sprVertrekTijdMinuten.setFont(new java.awt.Font("Tahoma", 0, 10));
+        sprVertrekTijdMinuten.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         sprVertrekTijdMinuten.setFocusable(false);
         pnlReizigerToevoegen.add(sprVertrekTijdMinuten, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 40, -1));
 
-        vertrekTijdLabel.setFont(new java.awt.Font("Tahoma", 0, 10));
+        vertrekTijdLabel.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         vertrekTijdLabel.setText("Vertrektijd:"); // NOI18N
         pnlReizigerToevoegen.add(vertrekTijdLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
-        sprVertrekTijdUren.setFont(new java.awt.Font("Tahoma", 0, 10));
+        sprVertrekTijdUren.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         sprVertrekTijdUren.setFocusable(false);
         sprVertrekTijdUren.setVerifyInputWhenFocusTarget(false);
         pnlReizigerToevoegen.add(sprVertrekTijdUren, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 40, -1));
 
-        bevestigButton.setFont(new java.awt.Font("Tahoma", 0, 10));
+        bevestigButton.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         bevestigButton.setText("Bevestig"); // NOI18N
         bevestigButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -369,29 +373,29 @@ Main main;
         });
         pnlReizigerToevoegen.add(bevestigButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 110, -1));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel1.setText(":");
         pnlReizigerToevoegen.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 10));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel2.setText(": 00");
         pnlReizigerToevoegen.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, -1, -1));
 
         getContentPane().add(pnlReizigerToevoegen, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 140, 260, 180));
 
-        pnlTreinAantal.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Treinen", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 10)));
-        pnlTreinAantal.setFont(new java.awt.Font("Tahoma", 0, 10));
+        pnlTreinAantal.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Treinen", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 10))); // NOI18N
+        pnlTreinAantal.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         pnlTreinAantal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblHuidigTreinenAantal.setFont(new java.awt.Font("Tahoma", 0, 10));
+        lblHuidigTreinenAantal.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblHuidigTreinenAantal.setText("Huidig aantal treinen: 4"); // NOI18N
         pnlTreinAantal.add(lblHuidigTreinenAantal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
-        lblPositie.setFont(new java.awt.Font("Tahoma", 0, 10));
+        lblPositie.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblPositie.setText("Voeg toe op Station:");
         pnlTreinAantal.add(lblPositie, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
-        btnVoegTreinToe.setFont(new java.awt.Font("Tahoma", 0, 10));
+        btnVoegTreinToe.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         btnVoegTreinToe.setText("Voeg toe");
         btnVoegTreinToe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -400,11 +404,11 @@ Main main;
         });
         pnlTreinAantal.add(btnVoegTreinToe, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 80, -1));
 
-        lblTreinnr.setFont(new java.awt.Font("Tahoma", 0, 10));
+        lblTreinnr.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblTreinnr.setText("Verwijder trein nr:"); // NOI18N
         pnlTreinAantal.add(lblTreinnr, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
-        btnVerwijderTrein.setFont(new java.awt.Font("Tahoma", 0, 10));
+        btnVerwijderTrein.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         btnVerwijderTrein.setText("Verwijder");
         btnVerwijderTrein.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -413,24 +417,24 @@ Main main;
         });
         pnlTreinAantal.add(btnVerwijderTrein, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 80, -1));
 
-        sprPositie.setFont(new java.awt.Font("Tahoma", 0, 10));
+        sprPositie.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         pnlTreinAantal.add(sprPositie, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 40, -1));
 
-        sprTreinNr.setFont(new java.awt.Font("Tahoma", 0, 10));
+        sprTreinNr.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         pnlTreinAantal.add(sprTreinNr, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 40, -1));
 
-        lblMaxAantalTreinen.setFont(new java.awt.Font("Tahoma", 0, 10));
+        lblMaxAantalTreinen.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblMaxAantalTreinen.setText("Maximaal: 0");
         pnlTreinAantal.add(lblMaxAantalTreinen, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
 
-        lblPassagiersPerTrein.setFont(new java.awt.Font("Tahoma", 0, 10));
+        lblPassagiersPerTrein.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblPassagiersPerTrein.setText("Passagiers per trein:");
         pnlTreinAantal.add(lblPassagiersPerTrein, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
-        sprPassagiersPerTrein.setFont(new java.awt.Font("Tahoma", 0, 10));
+        sprPassagiersPerTrein.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         pnlTreinAantal.add(sprPassagiersPerTrein, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 40, -1));
 
-        btnSlaOp.setFont(new java.awt.Font("Tahoma", 0, 10));
+        btnSlaOp.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         btnSlaOp.setText("Sla op");
         btnSlaOp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -443,7 +447,7 @@ Main main;
         pnlTreinAantal.getAccessibleContext().setAccessibleName("mm");
 
         tbcTabbladen.setBackground(getForeground());
-        tbcTabbladen.setFont(new java.awt.Font("Tahoma", 0, 10));
+        tbcTabbladen.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
 
         tbcTabbladen.addTab("Overzicht",  new javax.swing.ImageIcon(getClass().getResource("Icon/overzicht.gif")), pnlOverzicht, "Een overzicht van de statistieken");
         tbcTabbladen.addTab("Reizigers", new javax.swing.ImageIcon(getClass().getResource("Icon/reiziger.gif")), pnlReiziger, "Informatie over de reizigers");
@@ -454,7 +458,7 @@ Main main;
         lblSimulatieUitgeschakeld.setText("De simulatie is uitgeschakeld tijdens inactiviteit ivm. processorgebruik");
         getContentPane().add(lblSimulatieUitgeschakeld, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, -1, -1));
 
-        lblSimulatieActiveren.setFont(new java.awt.Font("Tahoma", 1, 14));
+        lblSimulatieActiveren.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblSimulatieActiveren.setText("Klik op het scherm om de simulatie te activeren");
         getContentPane().add(lblSimulatieActiveren, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, -1, -1));
 
@@ -487,6 +491,10 @@ Main main;
 * Voegt de reiziger(s) toe aan het systeem als er op de bevestigknop is geklikt
 */ 
 private void bevestigButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bevestigButtonMouseClicked
+    this.voegMensenToe();
+}//GEN-LAST:event_bevestigButtonMouseClicked
+
+private void voegMensenToe() {
     int vertrek = vertrekpuntBox.getSelectedIndex();
     int bestemming = bestemmingBox.getSelectedIndex();
     int insteltijd = ((Integer) sprVertrekTijdUren.getValue() * 3600) +  ((Integer) sprVertrekTijdMinuten.getValue() * 60);
@@ -536,8 +544,8 @@ private void bevestigButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FI
                     }
                 }
             }
-}//GEN-LAST:event_bevestigButtonMouseClicked
-
+}
+        
 /**
 * Verberg de foutmelding als er op OK is geklikt
 */ 

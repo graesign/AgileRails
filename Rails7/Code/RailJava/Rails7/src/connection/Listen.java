@@ -8,7 +8,6 @@ package connection;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import railcab.Main;
@@ -27,14 +26,13 @@ public class Listen extends Thread {
     // Integer to normalize start and end rails.?
     public static int normalize = 0;
     
-    private Main main;
+    private AddCab addCab;
     
-    public Listen(Main main) {
-        this.main = main;
+    public Listen(AddCab addCab) {
+        this.addCab = addCab;
     }
     
-    public static void listen(String rails, Main main) {
-        System.out.println("LISTENNN");
+    public static void listen(String rails, AddCab addCab) {
         Config.load();
         railsStart = Config.get(rails + "start");
         railsEnd = Config.get(rails + "end");
@@ -46,7 +44,7 @@ public class Listen extends Thread {
             normalize = -rails6end;
         }
         
-        thread = new Listen(main);
+        thread = new Listen(addCab);
         thread.start();
     }
     
@@ -79,8 +77,8 @@ public class Listen extends Thread {
             int end = cabs.getInt("end");
             int passengers = cabs.getInt("passengers");
 
-            synchronized (main) {
-                main.maakReiziger(start + normalize, end + normalize, passengers);
+            synchronized (addCab) {
+                Main.GUI.setPassengers(start + normalize, end + normalize, passengers);
             }
             Queries.deleteCab(cabs.getString("id"));
         }
