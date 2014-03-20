@@ -12,6 +12,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import data.*;
 import baan.*;
+import connection.AddCab;
 import connection.Listen;
 import connection.Queries;
 import java.util.Observer;
@@ -37,7 +38,11 @@ public class Main implements Observer {
      * 
      * @param hardwarebaan
      */
-    public Main(boolean hardwarebaan) {
+    public Main() {
+        
+    }
+    
+    public void init(boolean hardwarebaan) {
         initieerBaanDelen();
         
         wachtlijst = new LinkedList();
@@ -74,6 +79,7 @@ public class Main implements Observer {
      * @param tijd De vertrektij van reiziger in secondes
      */
     public void maakReiziger(int vertrek, int bestemming, int tijd) {
+        System.out.println("Adding passengers, start: " + vertrek + ", end: " + bestemming + ", time: " + tijd);
         Reiziger reiziger = new Reiziger(zoekStation(vertrek) ,zoekStation(bestemming) ,tijd);
         this.wachtlijst.nieuwReiziger(reiziger);
     }
@@ -139,15 +145,17 @@ public class Main implements Observer {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        Listen.listen("rails7");
             
         boolean baan = false;
         if(args.length > 0) {
             System.out.println("baan gekoppeld");
             baan = true;
         }
-        new Main(baan);
-    }
+
+        Main main = new Main();
+        Listen.listen("rails7", main);
+        main.init(baan);
+}
     
     /**
      * Deze methode initieert de lijst met baandelen.
