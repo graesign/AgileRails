@@ -17,6 +17,7 @@ public class Reis
    private int aantal;
    private Halte startHalte;
    public Halte bestemmingHalte;
+   private int halteBuitenland;
    private int[] tijd={99,99};
    public int id;
    
@@ -37,32 +38,29 @@ public class Reis
    
     // tijd wordt ingevoer in de volgende formaat: {u,m} uren in 24fotmaat, dus niet hoger dan 23uur en 59minuten! anders loopt die vast
  
-    public Reis(int aantal, Halte start, Halte eind, int[] tijd)    {
+    public Reis(int aantal, Halte start, Halte eind, int halteBuitenland, int[] tijd)    {
         this.aantal=aantal;
-        startHalte = start;
-        bestemmingHalte = eind;
+        this.startHalte = start;
+        this.bestemmingHalte = eind;
+        this.halteBuitenland = halteBuitenland;
         this.tijd = tijd;
-        System.out.println("nieuw reis aangemaakt\n"+aantal+" passagiers\n starthalte="+startHalte.getId()+
-        "\n eindhalte="+ bestemmingHalte.getId()+"\n starttijd="+getStartTijd()); 
-        timer =  new Timer(1000,new TimerHandler());
-        gereserveerd=true;
+        System.out.println("nieuw reis aangemaakt\n" + aantal + " passagiers\n starthalte="+startHalte.getId() +
+        "\n eindhalte=" + bestemmingHalte.getId() + "\n starttijd=" + getStartTijd()); 
+        this.timer = new Timer(1000,new TimerHandler());
+        this.gereserveerd=true;
         startReis();
-        
     }
     
-    public Reis( int aantal, Halte start, Halte eind){
-        //this.id=id;
+    public Reis(int aantal, Halte start, Halte eind, int halteBuitenland){
     	this.aantal=aantal;
-        startHalte = start;
-        bestemmingHalte = eind;
-        status=1;
-        
-        timer =  new Timer(1000,new TimerHandler());
+        this.startHalte = start;
+        this.bestemmingHalte = eind;
+        this.halteBuitenland = halteBuitenland;
+        this.status=1;
+        this.timer = new Timer(1000,new TimerHandler());
         startReis();
-        gereserveerd= false;
-        
+        this.gereserveerd= false;
     }
-    
     
     //////////////////////////////////////////////////////////GETTERS///////////////////////////////////////////////////
     public String getStartTijd(){

@@ -35,32 +35,28 @@ public class ReisBeheer {
    
         int[] tijd={99,99}; //add reizen voor test
         
-        /*for(int i=0;i<8;i++){
-        	addReis(5,(8-i),i+1,tijd);
-        }
-        */
     }
     
-    public static void addReis(int aantal, int start, int bestemming, int[] tijd){
+    public static void addReis(int aantal, int start, int bestemming, int[] tijd, int halteBuitenland) {
         Reis r;
-       
+
         if(tijd[0]==99&&tijd[1]==99){
-            r=new Reis(aantal, haltes.get(start), haltes.get(bestemming));
+            r=new Reis(aantal, haltes.get(start), haltes.get(bestemming), halteBuitenland);
             reizen.add(r);
             treizen.add(r);
             haltes.get(start).addReis(r);
-            
         }
         else{
-            r=new Reis(aantal,haltes.get(start), haltes.get(bestemming),tijd);
+            r=new Reis(aantal,haltes.get(start), haltes.get(bestemming), halteBuitenland, tijd);
             reizen.add(r);
             treizen.add(r);
         }
-        
-       
-
-        
     }
+    
+    public static void addReis(int aantal, int start, int bestemming, int[] tijd) {
+        ReisBeheer.addReis(aantal, start, bestemming, tijd, 0);
+    }
+    
     public  static double gemReisttijd(){
     	int rt=0;
     	int aantal=0;

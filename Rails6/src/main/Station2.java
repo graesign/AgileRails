@@ -51,9 +51,12 @@ public class Station2 extends JPanel {
 		bestemming = new JComboBox();
 		bestemming.setFont(f2);
 		bestemming.addItem(makeObj("Selecteer Station"));
-		for (int x = 1; x < 9; x++) {
-			bestemming.addItem(makeObj("Station " + x));
+                for (int x = 1; x < 9; x++) {
+                    bestemming.addItem(makeObj("Station " + x + ": Nederland"));
 		}
+                for (int x = 9; x < 17; x++) {
+                    bestemming.addItem(makeObj("Station " + x + ": Duitsland"));
+                }
 		bestemming.setEditable(true);
 		bestemming.setBounds(150, 80, 300, 20);
 
@@ -447,7 +450,7 @@ public class Station2 extends JPanel {
 					JOptionPane.showMessageDialog(personen,
 							"Bestemming kan niet het vertrek station zijn!",
 							"FOUT", JOptionPane.WARNING_MESSAGE);
-				} else {
+			}	 else {
 					System.out.println(getBestemming());
 					System.out.println(getVertrek());
 					System.out.println(getTijd());
@@ -457,12 +460,21 @@ public class Station2 extends JPanel {
 
 					// ReisBeheer.addReis(getPersonenID(),ReisBeheer.haltes.get(getVertrekid()),ReisBeheer.haltes.get(getBestemmingid()),new
 					// int[]{getUurID(),getMinID()});
-					ReisBeheer.addReis(getPersonenID(), getVertrekid() - 1,
-							getBestemmingid() - 1, new int[] { getUurID() - 1,
-									getMinID() - 1 });
+					int personen = getPersonenID();
+                                        int vertrek = getVertrekid() - 1;
+                                        int bestemming = getBestemmingid() - 1;
+                                        int[] tijd = {getUurID() - 1, getMinID() - 1};
+                                        int halteBuitenland = 0;
+                                        if (bestemming > 7) {
+                                            halteBuitenland = bestemming;
+                                            bestemming = 7;
+                                        }
+                                        System.out.println("personen: " + personen);
+                                        System.out.println("vertrek: " + vertrek);
+                                        System.out.println("bestemming: " + bestemming);
+                                        ReisBeheer.addReis(personen, vertrek, bestemming, tijd, halteBuitenland);
 
-					System.out.println("Aantal wachtenden station 5: "
-							+ ReisBeheer.getWacht(5));
+					System.out.println("Aantal wachtenden station 5: " + ReisBeheer.getWacht(5));
 					// System.out.println("Aantal mensen wachtend in station 5:
 					// "+ ReisBeheer.haltes.get(5).getAantalWachtenden());
 					RailScherm.setLabelText();
