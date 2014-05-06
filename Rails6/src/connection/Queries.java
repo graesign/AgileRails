@@ -6,6 +6,8 @@
 
 package connection;
 
+import java.sql.ResultSet;
+
 /**
  *
  * @author Administrator
@@ -31,8 +33,15 @@ public class Queries {
      * Get new people from the database
      * TODO: Delete the pulled cabs from Db.
      * TODO: Alleen mensen die bij deze rails starten.
+     * @return 
      */
-    public static void getCabs() {
-        
+    public static ResultSet getCabs() {
+        ResultSet rs = Dbmanager.doQuery("SELECT * FROM `rails` WHERE `start` >= " + Listen.railsStart + " AND `start` <= " + Listen.railsEnd + ";");
+
+        return rs;
+    }
+    
+    public static void deleteCab(String id) {
+        Dbmanager.insertQuery("DELETE FROM `rails` WHERE id = " + id + ";");
     }
 }
