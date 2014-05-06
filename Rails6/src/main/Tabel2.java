@@ -249,7 +249,7 @@ public class Tabel2 extends JPanel {
 
 	// Vernieuw de tabel
 	public static void refresh() {
-		System.out.println("Refresh||Rows: " + theTableModel.getRowCount() + "|| LSize" + sRows.size());
+//		System.out.println("Refresh||Rows: " + theTableModel.getRowCount() + "|| LSize" + sRows.size());
 		if (theTableModel.getRowCount() > 0) {
 			cvar = 1;
 			theTableModel.fireTableRowsInserted(0,

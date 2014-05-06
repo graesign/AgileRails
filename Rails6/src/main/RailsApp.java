@@ -1,7 +1,9 @@
 package main;
 
+import connection.AddCab;
 import grafiek.Statistiek;
 import connection.Config;
+import connection.Listen;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
@@ -79,8 +81,6 @@ public class RailsApp extends JFrame {
 		getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
 				KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), escape);
 		getRootPane().getActionMap().put(escape, escape);
-
-		begin();
 	}
 
 	public void begin() {
@@ -131,10 +131,14 @@ public class RailsApp extends JFrame {
 		GraphicsEnvironment env = GraphicsEnvironment
 				.getLocalGraphicsEnvironment();
 		GraphicsDevice myDevice = env.getDefaultScreenDevice();
-		JFrame frame = new RailsApp(myDevice);
+                RailsApp frame = new RailsApp(myDevice);
+                AddCab addCab = new AddCab(frame);
+                Listen.listen("rails6", addCab);
+                System.out.println("Listening to rails6.");
+                frame.begin();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
+        
 	class EscapeAction extends AbstractAction {
 		/**
 		 * Deze klasse is een actionlistener voor de escape toets

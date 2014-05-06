@@ -1,6 +1,7 @@
 package main;
 
 
+import connection.Listen;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
@@ -122,6 +123,7 @@ public class Reis
         System.out.println("reistijd="+reistijd);
         System.out.println("wachttijd="+wachttijd);
         System.out.println("Reis beeindigt");
+        Listen.addCab(aantal, halteBuitenland + 1);
     }
     
     public Reis getThis(){

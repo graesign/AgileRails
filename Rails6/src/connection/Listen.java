@@ -6,6 +6,7 @@
 
 package connection;
 
+import static java.lang.Thread.sleep;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -17,7 +18,7 @@ import java.util.logging.Logger;
  */
 public class Listen extends Thread {
     
-    private static Listen thread;
+    public static Listen thread;
     
     public static String railsStart;
     public static String railsEnd;
@@ -25,7 +26,7 @@ public class Listen extends Thread {
     // Integer to normalize start and end rails.?
     public static int normalize = 0;
     
-    private AddCab addCab;
+    private final AddCab addCab;
     
     public Listen(AddCab addCab) {
         this.addCab = addCab;
@@ -62,6 +63,17 @@ public class Listen extends Thread {
         } catch (Exception ex) {
             Logger.getLogger(Listen.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public static void addCab(int aantal, int eindHalte) {
+        synchronized (Listen.thread) {
+            Listen.thread.saveCab(aantal, eindHalte);
+        }
+    }
+        
+    public void saveCab(int aantal, int eindHalte) {
+        System.out.println("Adding cab in database, aantal: " + aantal + " eindhalte: " + eindHalte);
+        Queries.setCab(9, eindHalte, aantal);
     }
     
     /**
