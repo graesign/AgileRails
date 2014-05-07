@@ -1,6 +1,12 @@
 package main;
 
 import javax.swing.ImageIcon;
+import main.ReisBeheer;
+import main.ReisBeheer;
+import main.Sensor;
+import main.Sensor;
+import main.TreinBeheer;
+import main.TreinBeheer;
 
 public class CabAnimation extends ImageIcon {
 	/**
@@ -8,33 +14,35 @@ public class CabAnimation extends ImageIcon {
  realistische weergave zijn van rijdende treinen waarmee ons algoritme
  moet werken.
 	 */
-	private static final long serialVersionUID = 1L;
+	public static final long serialVersionUID = 1L;
 
 	public boolean zichtbaar, inwissel = false, running = false;
 	public int id, x, y;
 	public Sensor sensor;
-	ReisBeheer rb;
-	private int rxnr, rxoff;
+	ReisBeheer reisBeheer;
+	public int rxnr, rxoff;
 	public double positie, angle;
-	private double pl, rx, ry;
-	TreinBeheer tb;
+	public double pl, rx, ry;
+	TreinBeheer TreinBeheer;
 	public int tpositie =8;
-	
-
+ 
 	public CabAnimation(int sid, ReisBeheer rb,TreinBeheer tb) {
 		super("./cab.gif");
-		this.tb=tb;
+		this.TreinBeheer=tb;
 		id = sid;
-		this.rb = rb;
+		this.reisBeheer = rb;
 		sensor = new Sensor(sid, this);
 		setPositie(0);
-		setZichtbaarheid(false);
+		// OVERBODIG setZichtbaarheid(false);
 	}
 
-	public void setZichtbaarheid(boolean z) {
-		
-		zichtbaar = z;
-	}
+    public CabAnimation() {
+        
+    }
+    
+//	OVERBODIG public void setZichtbaarheid(boolean z) {
+//		zichtbaar = z;
+//	}
 
 	public void start() {
 		running = true;
@@ -55,13 +63,16 @@ public class CabAnimation extends ImageIcon {
 
 	// Voer een reeks berekeningen uit om de positie
 	// van het treintje op het scherm te bepalen
-	private void defineCabPosition() {
+	public void defineCabPosition() {
+            
+            
+            
 		// Zorgen dat positie altijd lager is als 100%
 		if (positie > 100)
 			positie = positie % 100;
 		// Voortgang berekenen
 		localiseerCabAnime();
-
+                
 		// Bochten berekenen
 		turnCabAnime();
 
@@ -70,8 +81,10 @@ public class CabAnimation extends ImageIcon {
 
 	}
 
-	// Zoek de ware coordinaten uit
-	private void localiseerCabAnime() {
+	// Zoek de ware coordinaten uit REF Temp
+        
+       
+	public void localiseerCabAnime() {
 		if (positie >= 0 && positie < 37.5) {
 			cabIsBoven();
 		} else if (positie >= 37.5 && positie < 50) {
@@ -80,7 +93,7 @@ public class CabAnimation extends ImageIcon {
 			cabIsBeneden();
 		} else if (positie >= 87.5 && positie < 100) {
 			cabIsLinks();
-		}
+		}   
 	}
 
     public void cabIsLinks() {
@@ -128,7 +141,7 @@ public class CabAnimation extends ImageIcon {
     }
 
 	// draai het plaatje in de bochten mbv ware coordinaten
-	private void turnCabAnime() {
+	public void turnCabAnime() {
 		int ux = (int) rx;
 		int uy = (int) ry;
 		if (ux < 151 && uy < 96) {
@@ -158,7 +171,7 @@ public class CabAnimation extends ImageIcon {
 	}
 
 	// Bereken de door openstaande wissels ontstane offset
-	private void wOffset(int pos) {
+	public void wOffset(int pos) {
 		if (pos == 1) {
 			// Cabs zijn boven
 			if (!(rxoff >= 48 && rxoff < 178) && inwissel) {
@@ -216,21 +229,21 @@ public class CabAnimation extends ImageIcon {
 	// Controleer of de trein een sensor passeert
 	int sens[]={10,11,12,13,20,21,22,23,30,31,32,33,40,41,42,43,50,51,52,53,60,61,62,63,70,71,72,73,80,81,82,83};
 	
-	private void pollSensor() {
+	public void pollSensor() {
 		int scheck = sensor.check();
 		if (scheck > 0) {
 			
 			
 			
-			tb.sensorBericht(this.id,sens[scheck-1]);
+			TreinBeheer.sensorBericht(this.id,sens[scheck-1]);
 			
 			// hij is langs sensor scheck stuur een bericht naar treinbeheer
 		}
 	}
 
 	// Controleer of de trein een station inrijd
-	private void checkWissel(int wid) {
-		if (rb.haltes.get(wid).wissel.status()) {
+	public void checkWissel(int wid) {
+		if (reisBeheer.haltes.get(wid).wissel.status()) {
 			inwissel = true;
 		} else {
 			inwissel = false;
@@ -238,7 +251,7 @@ public class CabAnimation extends ImageIcon {
 	}
 
 	// bereken hoek in graden
-	private double getAngle(double com1, double com2) {
+	public double getAngle(double com1, double com2) {
 		// System.out.println(Math.cos(com1 / com2));
 		return Math.atan(com2 / com1);
 	}

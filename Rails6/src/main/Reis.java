@@ -49,7 +49,7 @@ public class Reis
         "\n eindhalte=" + bestemmingHalte.getId() + "\n starttijd=" + getStartTijd()); 
         this.timer = new Timer(1000,new TimerHandler());
         this.gereserveerd=true;
-        startReis();
+//        startReis();
     }
     
     public Reis(int aantal, Halte start, Halte eind, int halteBuitenland){
@@ -59,7 +59,7 @@ public class Reis
         this.halteBuitenland = halteBuitenland;
         this.status=1;
         this.timer = new Timer(1000,new TimerHandler());
-        startReis();
+//        startReis();
         this.gereserveerd= false;
     }
     
@@ -111,11 +111,11 @@ public class Reis
     }
     
     
-    void startReis(){
-        
-        timer.start();
-        
-    }
+//    void startReis(){
+//        
+//        timer.start();
+//        
+//    }
     
     void stopReis(){
        

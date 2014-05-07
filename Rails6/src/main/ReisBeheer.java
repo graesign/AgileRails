@@ -145,7 +145,8 @@ public class ReisBeheer {
     }
     
 	public Halte langsteWachttijdHalte() {
-		Halte h, langsteWachttijdHalte = null;
+		Halte h;
+                Halte langsteWachttijdHalte = null;
 		int wachttijd = 0;
 		for (int i = 0; i < haltes.size(); i++) {
 			h = haltes.get(i);

@@ -2,6 +2,7 @@ package main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import main.TimeHandler;
 
 import javax.swing.Timer;
 
@@ -32,13 +33,17 @@ public class Trein extends CabAnimation {
     //public int reserveringen;
     
     TreinBeheer tb;
+    TimeHandler timeHandlerTime = new TimeHandler();
  
     public Trein(int sid, ReisBeheer rb,TreinBeheer tb) {
+        
+        
+        
         super(sid,rb,tb);
         this.id=sid;
 
         this.tb=tb;
-        timer =  new Timer(300,new TimerHandler());
+        timer =  new Timer(300, (ActionListener)timeHandlerTime);
         //timer.start();
         inHalte=false;
         rijdt=super.running;
@@ -46,6 +51,10 @@ public class Trein extends CabAnimation {
 
         //this.id=sid
         // TODO Auto-generated constructor stub
+    }
+    
+    public Trein(){
+        
     }
 	
     
@@ -65,7 +74,7 @@ public class Trein extends CabAnimation {
                 this.positie=sid;
                 tb.sector[sid].trein=this;
                 this.rij(true);
-                //als het de eerste sensor is moet de laatste tb.sector vrijgemaakt worden 
+                //als het de eerste sensor is moet de laatste TreinBeheer.sector vrijgemaakt worden 
                 if(sid==10&& tb.sector[84].trein==this){
                     tb.sector[84].trein=null;
                     //tb.sector[83].trein=null;
@@ -78,7 +87,7 @@ public class Trein extends CabAnimation {
             }
             //als de sector niet vrij is stopt die
             else if(this.positie!=sid){
-                //System.out.println("trein "+this.id+" stopt omdat tb.sector "+sid+" is bezet  en sector nn "+this.positie+" is geblokkeert");
+                //System.out.println("trein "+this.id+" stopt omdat TreinBeheer.sector "+sid+" is bezet  en sector nn "+this.positie+" is geblokkeert");
                 this.rij(false);
                 this.wacht();
             }
@@ -188,13 +197,11 @@ public class Trein extends CabAnimation {
    }
 
   
-    public Trein getThis(){
-    	return this;
-    }
+
   
     public void addReis(Reis reis){  
         this.reis= reis;
-        this.bestemming=rb.haltes.indexOf(reis.getBestemming());
+        this.bestemming=reisBeheer.haltes.indexOf(reis.getBestemming());
  //         this.bestemming.addFirst(bestemming);
       }
       
@@ -227,47 +234,54 @@ public class Trein extends CabAnimation {
         status=0;
     }
 
-class TimerHandler implements ActionListener{
-    	
-        public void actionPerformed(ActionEvent e){
-        		
-            if(wtijd>0){
-                    wtijd--;
-            }
-            if((wtijd==0&&inHalte) && getThis().positie%10==0){
-                inHalte=false;
-//   				System.out.println("bij de timer is de pos: "+positie+" trein "+id);
-                getThis().timer.stop();
-                sen1(getThis(),positie+1);
-
-            }
-            else if((wtijd==0&&inHalte) && (getThis().positie%10==1)){
-                inHalte=false;
-        //	System.out.println("bij de timer is de pos: "+positie+" trein "+id);	
-                getThis().timer.stop();
-                sen2(getThis(),positie+1);
-            }
-
-            else if(getThis().positie%10==2){
-                getThis().timer.stop();
-                sen3(getThis(),positie+1);
-            }
-            else if(getThis().positie%10==3){
-
-                getThis().timer.stop();
-
-                sen3(getThis(),positie);
-            }
-            else if(getThis().positie%10==4){
-
-                getThis().timer.stop();
-                if(positie==84){
-                        sen0(getThis(),10);
-                }
-                else{
-                        sen0(getThis(),positie+6);
-                }
-            }
-        }
-    }    
+//public class TimerHandler implements ActionListener{
+//    
+//   
+//    
+//    
+////        public TimerHandler getThis(){
+////    	return this;
+////    }
+//    	
+//        public void actionPerformed(ActionEvent e){
+//        		
+//            if(wtijd>0){
+//                    wtijd--;
+//            }
+//            if((wtijd==0&&inHalte) && getThis().positie%10==0){
+//                inHalte=false;
+////   				System.out.println("bij de timer is de pos: "+positie+" trein "+id);
+//                getThis().timer.stop();
+//                sen1(getThis(),positie+1);
+//
+//            }
+//            else if((wtijd==0&&inHalte) && (getThis().positie%10==1)){
+//                inHalte=false;
+//        //	System.out.println("bij de timer is de pos: "+positie+" trein "+id);	
+//                getThis().timer.stop();
+//                sen2(getThis(),positie+1);
+//            }
+//
+//            else if(getThis().positie%10==2){
+//                getThis().timer.stop();
+//                sen3(getThis(),positie+1);
+//            }
+//            else if(getThis().positie%10==3){
+//
+//                getThis().timer.stop();
+//
+//                sen3(getThis(),positie);
+//            }
+//            else if(getThis().positie%10==4){
+//
+//                getThis().timer.stop();
+//                if(positie==84){
+//                        sen0(getThis(),10);
+//                }
+//                else{
+//                        sen0(getThis(),positie+6);
+//                }
+//            }
+//        }
+//    }    
 }
