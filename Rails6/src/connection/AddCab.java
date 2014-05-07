@@ -8,6 +8,7 @@ package connection;
 
 import static connection.Listen.normalize;
 import javax.swing.JFrame;
+import main.ReisBeheer;
 //import railcab.Main;
 
 /**
@@ -23,11 +24,9 @@ public class AddCab {
     }
 
     public void add(int start, int end, int passengers) {
-        System.out.println("Adding cabs" + start + " " + end + " " + passengers);
-        //Main.GUI.setPassengers(start + normalize, end + normalize, passengers);
+        System.out.println("Adding cabs" + (start) + " " + (end) + " " + passengers);
+        int[] tijd={99,99};
+        ReisBeheer.addReis(passengers, start - 1, end - 1, tijd);
     }
     
-    public void save(int start, int end, int passengers) {
-        
-    }
 }
