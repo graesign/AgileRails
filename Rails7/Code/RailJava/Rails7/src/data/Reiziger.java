@@ -18,6 +18,7 @@ public class Reiziger {
     private int id;
     private int vertrekpunt;
     private int eindpunt;
+    private int eindpuntBuitenland;
     private int vertrektijd;
     private Reiziger previous = null,next = null;
        
@@ -27,14 +28,19 @@ public class Reiziger {
     * @param eindpunt het eindpunt van de reiziger
     * @param vertrektijd de gewenste vertrektijd van de reiziger
     */  
-    public Reiziger(int vertrekpunt, int eindpunt, int vertrektijd) {
+    public Reiziger(int vertrekpunt, int eindpunt, int vertrektijd, int halteBuitenland) {
         
         id = idteller;
         idteller++;
         
         this.vertrekpunt = vertrekpunt;
         this.eindpunt = eindpunt;
+        this.eindpuntBuitenland = eindpuntBuitenland;
         this.vertrektijd = vertrektijd;
+    }
+    
+    public Reiziger(int vertrekpunt, int eindpunt, int vertrektijd) {
+        this(vertrekpunt, eindpunt, vertrektijd, 0);
     }
     
     public int getId()
@@ -57,6 +63,11 @@ public class Reiziger {
         return eindpunt;
     }
     
+    public int getEindpuntBuitenland()
+    {
+        return eindpuntBuitenland;
+    }
+    
     public int getVertrekpunt()
     {
         return vertrekpunt;
@@ -70,6 +81,11 @@ public class Reiziger {
     public void setEindpunt(int eindpunt)
     {
         this.eindpunt = eindpunt;
+    }
+    
+    public void setEindpuntBuitenland(int eindpuntBuitenland)
+    {
+        this.eindpuntBuitenland = eindpuntBuitenland;
     }
     
     public void setVertrektijd(int vertrektijd)

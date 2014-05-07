@@ -79,8 +79,11 @@ public class Main implements Observer {
      * @param tijd De vertrektij van reiziger in secondes
      */
     public void maakReiziger(int vertrek, int bestemming, int tijd) {
+        this.maakReiziger(vertrek, bestemming, tijd, 0);
+    }
+    public void maakReiziger(int vertrek, int bestemming, int tijd, int bestemmingBuitenland) {
         System.out.println("Adding passengers, start: " + vertrek + ", end: " + bestemming + ", time: " + tijd);
-        Reiziger reiziger = new Reiziger(zoekStation(vertrek) ,zoekStation(bestemming) ,tijd);
+        Reiziger reiziger = new Reiziger(zoekStation(vertrek), zoekStation(bestemming), tijd, bestemmingBuitenland);
         this.wachtlijst.nieuwReiziger(reiziger);
     }
     

@@ -340,7 +340,7 @@ Main main;
 
         bestemmingBox.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         bestemmingBox.setMaximumRowCount(9);
-        bestemmingBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bestemming", "Station 1", "Station 2", "Station 3", "Station 4", "Station 5", "Station 6", "Station 7", "Station 8" }));
+        bestemmingBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bestemming", "Station 1: Duitsland", "Station 2: Duitsland", "Station 3: Duitsland", "Station 4: Duitsland", "Station 5: Duitsland", "Station 6: Duitsland", "Station 7: Duitsland", "Station 8: Duitsland", "Station 1: Nederland", "Station 2: Nederland", "Station 3: Nederland", "Station 4: Nederland", "Station 5: Nederland", "Station 6: Nederland", "Station 7: Nederland", "Station 8: Nederland" }));
         pnlReizigerToevoegen.add(bestemmingBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 220, -1));
 
         aantalReizSpinner.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
@@ -497,6 +497,11 @@ private void bevestigButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FI
 private void voegMensenToe() {
     int vertrek = vertrekpuntBox.getSelectedIndex();
     int bestemming = bestemmingBox.getSelectedIndex();
+    int bestemmingBuitenland = 0;
+    if (bestemming > 8) {
+        bestemmingBuitenland = bestemming;
+        bestemming = 8;
+    }
     int insteltijd = ((Integer) sprVertrekTijdUren.getValue() * 3600) +  ((Integer) sprVertrekTijdMinuten.getValue() * 60);
   
     // Controle voor geldige locaties
