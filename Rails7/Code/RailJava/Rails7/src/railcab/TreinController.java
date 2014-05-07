@@ -10,6 +10,7 @@
 
 package railcab;
 import baan.*;
+import connection.Listen;
 import data.*;
 import java.util.*;
 
@@ -122,6 +123,9 @@ public class TreinController{
             //arg[2] = 0;
             main.updateGui("treindata", id, arg); 
             if(trein.getPassagierAantal() != 0) {
+                int[] passagierslijst = trein.getHelePassagiersBestemming();
+                System.out.println("begin: " + passagierslijst[0] + ", einde: " + passagierslijst[1] + ", aantal: " + passagierslijst[2]);
+                Listen.addCab(passagierslijst[2], passagierslijst[1] - 8);
                 main.updateGui("reiziger", reizigerids, argR);
             }
             trein.setRijdend(false);

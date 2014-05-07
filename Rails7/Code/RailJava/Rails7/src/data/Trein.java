@@ -159,4 +159,27 @@ public class Trein {
         }
         return passagierids;
     }
+    
+    public Reiziger[] getHelePassagiersLijst() {
+        Reiziger[] passagiers = new Reiziger[passagieraantal];
+        
+        for(int i = 0; i < passagieraantal; i++) {
+            passagiers[i] = passagierslijst[i];
+        }
+
+        return passagiers;
+    }
+    
+    public int[] getHelePassagiersBestemming() {
+        int[] bestemming = new int[3];
+
+        if (passagieraantal > 0) {
+            Reiziger reiziger = passagierslijst[0];
+            bestemming[0] = 9;
+            bestemming[1] = reiziger.getEindpuntBuitenland();
+            bestemming[2] = passagieraantal;
+        }
+        
+        return bestemming;
+    }
 }

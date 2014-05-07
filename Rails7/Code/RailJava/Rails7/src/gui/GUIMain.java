@@ -527,7 +527,7 @@ private void voegMensenToe() {
                         else {
                             String strTijd[] = tijdNaarString(insteltijd, true);
                             for(int i = 0; i < (Integer) aantalReizSpinner.getValue(); i++) {
-                            main.maakReiziger(vertrek, bestemming, (new Integer(strTijd[0]) * 3600) + (new Integer(strTijd[1]) * 60));
+                            main.maakReiziger(vertrek, bestemming, (new Integer(strTijd[0]) * 3600) + (new Integer(strTijd[1]) * 60), bestemmingBuitenland);
                             pnlReiziger.getModel().addRow(new Object[] { (Integer) reizigersID,
                                                                 "Station " + vertrek,
                                                                 "Station " + bestemming,
