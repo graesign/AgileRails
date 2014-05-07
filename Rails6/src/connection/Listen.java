@@ -65,13 +65,13 @@ public class Listen extends Thread {
         }
     }
     
+    /**
+     * Save a cab to the database to be retrieved
+     * by another rails application
+     * @param aantal
+     * @param eindHalte 
+     */
     public static void addCab(int aantal, int eindHalte) {
-        synchronized (Listen.thread) {
-            Listen.thread.saveCab(aantal, eindHalte);
-        }
-    }
-        
-    public void saveCab(int aantal, int eindHalte) {
         System.out.println("Adding cab in database, aantal: " + aantal + " eindhalte: " + eindHalte);
         Queries.setCab(9, eindHalte, aantal);
     }
