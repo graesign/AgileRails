@@ -65,6 +65,17 @@ public class Listen extends Thread {
     }
     
     /**
+     * Save a cab to the database to be retrieved
+     * by another rails application
+     * @param aantal
+     * @param eindHalte 
+     */
+    public static void addCab(int aantal, int eindHalte) {
+        System.out.println("Adding cab in database, aantal: " + aantal + " eindhalte: " + eindHalte);
+        Queries.setCab(1, eindHalte, aantal);
+    }
+    
+    /**
      * Set cabs from a resultset in the application.
      * Delete cabs from DB straight after.
      * @param cabs

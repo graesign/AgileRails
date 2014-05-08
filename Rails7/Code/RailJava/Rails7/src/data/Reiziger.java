@@ -35,7 +35,7 @@ public class Reiziger {
         
         this.vertrekpunt = vertrekpunt;
         this.eindpunt = eindpunt;
-        this.eindpuntBuitenland = eindpuntBuitenland;
+        this.eindpuntBuitenland = halteBuitenland;
         this.vertrektijd = vertrektijd;
     }
     
