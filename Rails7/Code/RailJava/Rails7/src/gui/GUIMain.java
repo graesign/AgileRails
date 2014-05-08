@@ -74,7 +74,7 @@ Main main;
     public void setPassengers(int start, int end, int passengers) {
         System.out.println("inside GUI Main");
         vertrekpuntBox.getModel().setSelectedItem("Station " + start);
-        bestemmingBox.getModel().setSelectedItem("Station " + end);
+        bestemmingBox.getModel().setSelectedItem("Station " + end + ": Duitsland");
         aantalReizSpinner.getModel().setValue(passengers);
 
         this.voegMensenToe();
