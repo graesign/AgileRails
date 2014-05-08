@@ -36,7 +36,7 @@ public class Queries {
      * @return 
      */
     public static ResultSet getCabs() {
-        ResultSet rs = Dbmanager.doQuery("SELECT * FROM `rails` WHERE `start` >= " + Listen.railsStart + " AND `start` <= " + Listen.railsEnd + ";");
+        ResultSet rs = Dbmanager.doQuery("SELECT * FROM `rails` WHERE `start` >= " + Listen.railsStart + " AND `start` <= " + Listen.railsEnd + " AND `end` > 0;");
 
         return rs;
     }
