@@ -22,6 +22,6 @@ public class AddCab {
     }
 
     public void add(int start, int end, int passengers) {
-        Main.GUI.setPassengers(start + normalize, end + normalize, passengers);
+        Main.GUI.setPassengers(start - 8, end - 8, passengers);
     }
 }

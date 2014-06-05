@@ -15,8 +15,10 @@ public class Halte
         reizen = new LinkedList<Reis>();
         this.id=id;
     }
-    
-    
+
+    Halte() {
+       
+    }
     
     public int getId(){
         return id;
@@ -31,6 +33,8 @@ public class Halte
         else{
         	reizen.addLast(reis);
         }
+        LinkedList<Reis> reizenTestList = reizen;
+        System.out.println("PRINT REIS + " + reis.bestemmingHalte);
          System.out.println("reis aan halte "+id+" toegevoegd");
     	
     }

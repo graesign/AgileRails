@@ -67,7 +67,9 @@ public class ReisBeheer {
     		}
     	}
     	if(rt>0&&aantal>0)
+            
     	return rt/aantal;
+        
     	else return 0;
     
     	
@@ -102,7 +104,7 @@ public class ReisBeheer {
 
     //reizen die wachten en in trein zitten
     public static ArrayList<Reis> getActieveReizen(){
-        ArrayList<Reis> ar=new ArrayList<Reis>();
+        ArrayList<Reis> ar =new ArrayList<Reis>();
         for(Reis r:reizen){
             if(r.getStatus()>0&&r.getStatus()<3)
             ar.add(r);
@@ -145,8 +147,7 @@ public class ReisBeheer {
     }
     
 	public Halte langsteWachttijdHalte() {
-		Halte h;
-                Halte langsteWachttijdHalte = null;
+		Halte h, langsteWachttijdHalte = null;
 		int wachttijd = 0;
 		for (int i = 0; i < haltes.size(); i++) {
 			h = haltes.get(i);

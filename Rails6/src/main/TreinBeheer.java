@@ -114,7 +114,7 @@ public class TreinBeheer{
 		t.positie=0;
 		trein.status=-1;
 		treinen.remove(t);
-//		t.setZichtbaarheid(false);
+		t.setZichtbaarheid(false);
 		sector[84].trein=null;
 		System.out.println("--treinAf");
 	}   

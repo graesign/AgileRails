@@ -140,7 +140,7 @@ public class RailScherm extends JPanel {
 			}
 
 			ti++;
-		}// Einde for-each cab lus
+         }// Einde for-each cab lus
 
 		// Teken wissels
 		for (int i = 0; i <= 7; i++) {

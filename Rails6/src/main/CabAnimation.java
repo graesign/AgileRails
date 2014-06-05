@@ -1,12 +1,7 @@
 package main;
 
+import Animation.DefinePosition;
 import javax.swing.ImageIcon;
-import main.ReisBeheer;
-import main.ReisBeheer;
-import main.Sensor;
-import main.Sensor;
-import main.TreinBeheer;
-import main.TreinBeheer;
 
 public class CabAnimation extends ImageIcon {
 	/**
@@ -14,35 +9,34 @@ public class CabAnimation extends ImageIcon {
  realistische weergave zijn van rijdende treinen waarmee ons algoritme
  moet werken.
 	 */
-	public static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
 	public boolean zichtbaar, inwissel = false, running = false;
 	public int id, x, y;
 	public Sensor sensor;
-	ReisBeheer reisBeheer;
-	public int rxnr, rxoff;
+	ReisBeheer rb;
+	private int rxnr, rxoff;
 	public double positie, angle;
-	public double pl, rx, ry;
-	TreinBeheer TreinBeheer;
+	private double pl, rx, ry;
+	TreinBeheer tb;
 	public int tpositie =8;
- 
+	
+        // public DefinePosition definePosition = new DefinePosition();
+
 	public CabAnimation(int sid, ReisBeheer rb,TreinBeheer tb) {
 		super("./cab.gif");
-		this.TreinBeheer=tb;
+		this.tb=tb;
 		id = sid;
-		this.reisBeheer = rb;
+		this.rb = rb;
 		sensor = new Sensor(sid, this);
 		setPositie(0);
-		// OVERBODIG setZichtbaarheid(false);
+		setZichtbaarheid(false);
 	}
 
-    public CabAnimation() {
-        
-    }
-    
-//	OVERBODIG public void setZichtbaarheid(boolean z) {
-//		zichtbaar = z;
-//	}
+	public void setZichtbaarheid(boolean z) {
+		
+		zichtbaar = z;
+	}
 
 	public void start() {
 		running = true;
@@ -65,14 +59,12 @@ public class CabAnimation extends ImageIcon {
 	// van het treintje op het scherm te bepalen
 	public void defineCabPosition() {
             
-            
-            
 		// Zorgen dat positie altijd lager is als 100%
-		if (positie > 100)
-			positie = positie % 100;
+		//if (positie > 100)
+		//	positie = positie % 100;
 		// Voortgang berekenen
 		localiseerCabAnime();
-                
+
 		// Bochten berekenen
 		turnCabAnime();
 
@@ -81,19 +73,19 @@ public class CabAnimation extends ImageIcon {
 
 	}
 
-	// Zoek de ware coordinaten uit REF Temp
-        
-       
+	// Zoek de ware coordinaten uit
 	public void localiseerCabAnime() {
 		if (positie >= 0 && positie < 37.5) {
 			cabIsBoven();
+                        
 		} else if (positie >= 37.5 && positie < 50) {
 			cabIsRechts();
 		} else if (positie >= 50 && positie < 87.5) {
 			cabIsBeneden();
 		} else if (positie >= 87.5 && positie < 100) {
 			cabIsLinks();
-		}   
+		}
+                
 	}
 
     public void cabIsLinks() {
@@ -235,7 +227,7 @@ public class CabAnimation extends ImageIcon {
 			
 			
 			
-			TreinBeheer.sensorBericht(this.id,sens[scheck-1]);
+			tb.sensorBericht(this.id,sens[scheck-1]);
 			
 			// hij is langs sensor scheck stuur een bericht naar treinbeheer
 		}
@@ -243,7 +235,7 @@ public class CabAnimation extends ImageIcon {
 
 	// Controleer of de trein een station inrijd
 	public void checkWissel(int wid) {
-		if (reisBeheer.haltes.get(wid).wissel.status()) {
+		if (rb.haltes.get(wid).wissel.status()) {
 			inwissel = true;
 		} else {
 			inwissel = false;

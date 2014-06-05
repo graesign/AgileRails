@@ -22,7 +22,11 @@ public class Sensor {
 				boolean iswissel = (sensorid - 1) % 4 == 0
 						|| (sensorid - 2) % 4 == 0;
 				if ((iswissel && cab.inwissel) || !iswissel) {
+                                    
+                                    System.out.println("print sensorId" + sensorid + 1);
 					return sensorid + 1;
+                                        
+                                        
 				}
 			}
 			sensorid++;
